@@ -1,6 +1,6 @@
 import apiRequest from '../../lib/apiRequest';
 import React, { useState } from 'react'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function Login() {
@@ -9,7 +9,7 @@ function Login() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false)
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,7 +26,9 @@ function Login() {
         const res = await apiRequest.post("/auth/login",{username,password})
         console.log(res)
 
-        // navigate("/login/login")
+        localStorage.setItem("userData", JSON.stringify(res.data))
+
+        navigate("/")
 
 
        } catch (error) {
