@@ -25,7 +25,7 @@ function Register() {
         const res = await apiRequest.post("/auth/register",{username,email,password})
         console.log(res)
 
-        navigate("/login/login")
+        navigate("/login")
 
 
        } catch (error) {

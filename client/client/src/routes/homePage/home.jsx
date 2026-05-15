@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
 
+
 function Home() {
 
 const {currentUser} = useContext(AuthContext);
@@ -8,8 +9,10 @@ const {currentUser} = useContext(AuthContext);
 console.log(currentUser)
 
   return (
-    <div>Home</div>
+   <>
 
+     <div>Home</div>
+   </>
   )
 }
 

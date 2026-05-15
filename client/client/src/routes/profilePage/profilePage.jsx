@@ -3,10 +3,15 @@ import apiRequest from "../../lib/apiRequest";
 import "./profilePage.scss";
 // import List from "../../components/list/List";
 // import Chat from "../../components/chat/Chat";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import avatarImg from "../../assets/noavter.jpeg"
 
 function ProfilePage() {
 
     const navigate = useNavigate()
+
+    const {currentUser, updateUser} = useContext(AuthContext)
 
     const handleLogout = async () => {
         try {
@@ -22,17 +27,20 @@ function ProfilePage() {
     }
 
   return (
-    <div className="profilePage">
+    <>
+
+    
+      <div className="profilePage">
       <div className="details">
         <div className="wrapper">
           <div className="title">
             <h1>User Information</h1>
-            <button>Update Profile</button>
+            <button onClick={() => {navigate("/profileUpdatePage")}}>Update Profile</button>
           </div>
           <div className="info">
-            <span>Avatar: <img src="/noavatar.jpg" alt="" /></span>
-            <span>Username: <b>John Doe</b></span>
-            <span>E-mail: <b>john@gmail.com</b></span>
+            <span>{currentUser.avatar || <img src={avatarImg} alt="" />}</span>
+            <span>Username: <b>{currentUser.username}</b></span>
+            <span>E-mail: <b>{currentUser.email}</b></span>
             <button className="logout" onClick={handleLogout}>Logout</button>
           </div>
           <div className="title">
@@ -52,6 +60,7 @@ function ProfilePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

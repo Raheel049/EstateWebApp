@@ -1,13 +1,17 @@
 import apiRequest from '../../lib/apiRequest';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
+
 
 function Login() {
 
     
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false)
+
+    const {updateUser} = useContext(AuthContext);
 
     const navigate = useNavigate()
 
@@ -26,7 +30,7 @@ function Login() {
         const res = await apiRequest.post("/auth/login",{username,password})
         console.log(res)
 
-        localStorage.setItem("userData", JSON.stringify(res.data))
+        updateUser(res.data)
 
         navigate("/")
 

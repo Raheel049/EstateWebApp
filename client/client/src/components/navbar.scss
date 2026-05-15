@@ -1,0 +1,209 @@
+/* navbar.scss */
+
+.navbar {
+  width: 80%;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: sans-serif;
+  background-color: rgb(147, 230, 230);
+  border-radius: 12px;
+
+  position: relative;
+
+  /* ================= LEFT ================= */
+
+  .left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      text-decoration: none;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+
+      img {
+        width: 32px;
+        border-radius: 20px;
+      }
+    }
+
+    .navLinks {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      a {
+        text-decoration: none;
+        color: black;
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  /* ================= RIGHT ================= */
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .authLinks {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .register {
+        background-color: #fece51;
+        padding: 10px 18px;
+        border-radius: 8px;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-left: 10px;
+
+      img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      p{
+        font-weight: 600;
+      }
+
+      .profile {
+        position: relative;
+        padding: 10px 18px;
+        border-radius: 8px;
+        background-color: #fece51;
+        text-decoration: none;
+        color: black;
+
+        .notification {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+
+          width: 22px;
+          height: 22px;
+
+          border-radius: 50%;
+          background-color: red;
+          color: white;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          font-size: 12px;
+        }
+      }
+    }
+
+    /* ================= HAMBURGER ================= */
+
+    .menuIcon {
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+
+      img {
+        width: 32px;
+      }
+    }
+
+    /* ================= MOBILE MENU ================= */
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+
+      width: 70%;
+      height: 100vh;
+
+      background-color: black;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      gap: 40px;
+
+      transition: 0.5s ease;
+
+      z-index: 1000;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+      }
+
+      &.active {
+        right: 0;
+      }
+    }
+  }
+
+  /* ================= RESPONSIVE ================= */
+
+  @media (max-width: 768px) {
+    width: 95%;
+    padding: 0 15px;
+
+    .left {
+      .navLinks {
+        display: none;
+      }
+    }
+
+    .right {
+      .authLinks {
+        display: none;
+      }
+
+      .user {
+        span {
+          display: none;
+        }
+
+        .profile {
+          display: none;
+        }
+      }
+
+      .menuIcon {
+        display: block;
+      }
+    }
+  }
+}
