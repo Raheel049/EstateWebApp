@@ -6,6 +6,7 @@ import Home from "./routes/homePage/home";
 import ProfilePage from "./routes/profilePage/profilePage";
 import Layout from "./components/layout";
 import ProfileUpdatePage from "./routes/profilePage/profileUpdatePage";
+import NewPostPage from "./routes/newPostPage/newPostPage";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="/profilePage" element={<ProfilePage />} />
 
           <Route path="/profileUpdatePage" element={<ProfileUpdatePage />} />
+
+          <Route path="/add" element={<NewPostPage />} />
         </Route>
       </Routes>
     </>

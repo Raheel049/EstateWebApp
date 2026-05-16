@@ -6,6 +6,7 @@ import "./profilePage.scss";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import avatarImg from "../../assets/noavter.jpeg"
+import { Link } from "react-router-dom";
 
 function ProfilePage() {
 
@@ -45,7 +46,10 @@ function ProfilePage() {
           </div>
           <div className="title">
             <h1>My List</h1>
+            <Link to="/add">
             <button>Create New Post</button>
+            
+            </Link>
           </div>
           {/* <List /> */}
           <div className="title">

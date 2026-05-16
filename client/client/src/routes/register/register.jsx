@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import apiRequest from '../../lib/apiRequest';
+import styles from "./register.module.css"
 
 function Register() {
 
@@ -38,8 +39,8 @@ function Register() {
     }
 
   return (
-    <div className="regster">
-        <div className="formContainer">
+    <div className={styles.regster}>
+        <div className={styles.formContainer}>
             <form onSubmit={handleSubmit}>  
                 <h1>Create an Account</h1>
                 <input name='username' type="text" placeholder='Username' />
@@ -49,7 +50,7 @@ function Register() {
 
                 {error && <span>{error}</span>}
 
-                <Link to={"/login/login"}>Login</Link>
+                <Link to={"/login"}>Login</Link>
 
             </form>
         </div>
