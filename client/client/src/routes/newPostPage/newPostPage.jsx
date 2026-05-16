@@ -2,10 +2,12 @@ import { useState } from "react";
 import "./newPostPage.scss";
 import apiRequest from "../../lib/apiRequest";
 import CloudinaryUploadWidget from "../../components/uploadWidget/uploadWidget";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function NewPostPage() {
   const [error, setError] = useState("");
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,6 +43,7 @@ function NewPostPage() {
           restaurant: 1500,
         },
       });
+      navigate("/"+res.data.id);
     } catch (error) {
       console.log(error.message);
       setError(error);
@@ -67,6 +70,7 @@ function NewPostPage() {
             </div>
             <div className="item description">
               <label htmlFor="desc">Description</label>
+              <input id="desc" name="desc" type="text" />
             </div>
             <div className="item">
               <label htmlFor="city">City</label>
@@ -151,7 +155,10 @@ function NewPostPage() {
         </div>
       </div>
       <div className="sideContainer">
-        <CloudinaryUploadWidget  />
+        {images.map((image,index) => (
+          <img src={image} key={index} alt="" />
+        ))}
+        <CloudinaryUploadWidget setImages={setImages} multiple={true} />
       </div>
     </div>
   );

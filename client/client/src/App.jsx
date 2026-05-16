@@ -7,6 +7,8 @@ import ProfilePage from "./routes/profilePage/profilePage";
 import Layout from "./components/layout";
 import ProfileUpdatePage from "./routes/profilePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage";
+import SinglePage from "./routes/singlePage/singlePage";
+import { singlePageLoader } from "./lib/loader";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/profileUpdatePage" element={<ProfileUpdatePage />} />
 
           <Route path="/add" element={<NewPostPage />} />
+
+          <Route path="/:id" element={<SinglePage />} loader={singlePageLoader}/>
         </Route>
       </Routes>
     </>

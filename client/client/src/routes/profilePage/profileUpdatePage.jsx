@@ -66,7 +66,7 @@ const ProfileUpdatePage = () => {
       className='avatar'
    />
 
-   <CloudinaryUploadWidget setAvatar={setAvatar} />
+   <CloudinaryUploadWidget setAvatar={setAvatar} multiple={false} />
 </div>
     </div>
   )

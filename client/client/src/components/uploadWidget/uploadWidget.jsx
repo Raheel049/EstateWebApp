@@ -1,4 +1,4 @@
-const CloudinaryUploadWidget = ({ setAvatar }) => {
+const CloudinaryUploadWidget = ({ setAvatar, multiple, setImages }) => {
 
     const handleUpload = () => {
   
@@ -13,7 +13,11 @@ const CloudinaryUploadWidget = ({ setAvatar }) => {
   
         (error, result) => {
           if (!error && result.event === "success") {
-            setAvatar(result.info.secure_url);
+            if (multiple) {
+              setImages((prev) => [...prev, result.info.secure_url])
+           } else {
+              setAvatar(result.info.secure_url)
+           }
           }
         }
       );
